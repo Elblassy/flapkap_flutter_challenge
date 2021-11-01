@@ -8,7 +8,7 @@ This project is a starting point for FlapKap Flutter Challenge.
 
 ScreenShots:
 
-![Alt text](/screenshots/mobile_1.png?raw=true)
-![Alt text](/screenshots/mobile_2.png?raw=true)
-![Alt text](/screenshots/web.png?raw=true)
+<img src="/screenshots/mobile_1.png" width="400" height="866">
+<img src="/screenshots/mobile_2.png" width="400" height="866">
+<img src="/screenshots/web.png" width="800" height="413">
 
