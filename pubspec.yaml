@@ -18,6 +18,7 @@ dependencies:
   google_fonts: ^2.1.0
   url_strategy: ^0.2.0
   syncfusion_flutter_charts: ^19.3.47
+  curved_navigation_bar: ^1.0.1
 
   cupertino_icons: ^1.0.2
 
@@ -35,4 +36,5 @@ flutter:
 
   assets:
     - assets/orders.json
+    - assets/images/
 
