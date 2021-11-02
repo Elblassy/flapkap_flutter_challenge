@@ -14,6 +14,7 @@ class OrderViewmodel extends ChangeNotifier {
   Future<void> getOrders() async {
     orderList.clear();
     final orders = await ParseJson().readOrders();
+
     orderList.addAll(orders);
 
     _setAverage();
@@ -44,9 +45,9 @@ class OrderViewmodel extends ChangeNotifier {
   }
 
   void setChart() {
+    final format = DateFormat('yyyy-MM-dd');
     for (var order in orderList) {
       final dateTime = DateTime.parse(order.registered ?? "");
-      final format = DateFormat('yyyy-MM-dd');
       final dateFormatted = format.format(dateTime);
 
       if (dateFormatted != "") {
@@ -58,6 +59,28 @@ class OrderViewmodel extends ChangeNotifier {
       }
     }
 
+    _modifySortArray();
+
+    final otherDays = _getDaysInBetween(DateTime.parse(chartList[0].date),
+        DateTime.parse(chartList[chartList.length - 1].date));
+
+    for(var day in otherDays){
+      _chart.putIfAbsent(format.format(day), () => 0);
+    }
+
+
+    _modifySortArray();
+  }
+
+  List<DateTime> _getDaysInBetween(DateTime startDate, DateTime endDate) {
+    List<DateTime> days = [];
+    for (int i = 0; i <= endDate.difference(startDate).inDays; i++) {
+      days.add(startDate.add(Duration(days: i)));
+    }
+    return days;
+  }
+
+  void _modifySortArray(){
     chartList = _chart.entries
         .map((e) => ChartModel(date: e.key, numOfOrders: e.value))
         .toList();

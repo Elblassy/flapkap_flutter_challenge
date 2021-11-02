@@ -14,6 +14,6 @@ class ParseJson {
   Future<List<OrderModel>> readOrders() async {
     final String response = await rootBundle.loadString('assets/orders.json');
     List data = await json.decode(response);
-   return data.map((item) => OrderModel.fromJson(item)).toList();
+    return data.map((item) => OrderModel.fromJson(item)).toList();
   }
 }
